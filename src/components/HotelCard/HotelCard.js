@@ -3,20 +3,20 @@ import './HotelCard.style.scss';
 
 const HotelCard = ({ hotel }) => {
   return (
-    <div className="hotel-card" key={hotel.id}>
-      <div
+    <section className="hotel-card" key={hotel.id}>
+      <figure
         className="image"
         style={{
           backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`
         }}
       />
-      <div className="hotel-details">
-        <div className="hotel-name">{hotel.hotelStaticContent.name}</div>
-        <div className="location">
+      <section className="hotel-details">
+        <h5 className="hotel-name">{hotel.hotelStaticContent.name}</h5>
+        <p className="location">
           {hotel.hotelStaticContent.neighborhoodName}
-        </div>
-      </div>
-      <div className="price-details">
+        </p>
+      </section>
+      <section className="price-details">
         <span className="price">
           <span
             dangerouslySetInnerHTML={{
@@ -27,8 +27,8 @@ const HotelCard = ({ hotel }) => {
         </span>
         <span className="rewards">{hotel.rewards.miles} miles</span>
         <button className="button">Select</button>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 

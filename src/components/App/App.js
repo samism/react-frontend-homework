@@ -15,8 +15,11 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div className="content">
-        <div>
+      <header>
+        <h1 className="app-heading">Welcome to RocketMiles</h1>
+      </header>
+      <main className="content">
+        <aside>
           <div className="filters">
             Hotel name
             <input type="text" className="input" maxLength={1} />
@@ -28,14 +31,14 @@ const App = () => {
             </select>
             <button className="button">Reset</button>
           </div>
-        </div>
+        </aside>
 
-        <div className="hotel-list">
+        <section className="hotel-list">
           {hotels.map(hotel => (
             <HotelCard key={hotel.id} hotel={hotel} />
           ))}
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };
