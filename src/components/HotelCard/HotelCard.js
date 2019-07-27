@@ -3,7 +3,7 @@ import './HotelCard.style.scss';
 
 const HotelCard = ({ hotel }) => {
   return (
-    <section className="hotel-card" key={hotel.id}>
+    <section className="hotel-card">
       <figure
         className="image"
         style={{
