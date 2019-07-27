@@ -29,7 +29,9 @@ const App = () => {
               <option value="">Price low-to-high</option>
               <option value="">Price high-to-low</option>
             </select>
-            <button className="button">Reset</button>
+            <button className="button" type="button">
+              Reset
+            </button>
           </div>
         </aside>
 
