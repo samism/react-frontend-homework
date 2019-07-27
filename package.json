@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "NODE_ENV=production lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "pretty-quick --staged",
+      "eslint src/ --fix",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -22,11 +30,22 @@
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
     "babel-jest": "^24.5.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.1",
     "jest": "^24.5.0",
+    "lint-staged": "^9.2.1",
     "parcel-bundler": "^1.12.0",
+    "pretty-quick": "^1.11.1",
     "sass": "^1.20.1"
   },
   "dependencies": {
