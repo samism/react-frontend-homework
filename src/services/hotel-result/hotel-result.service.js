@@ -1,11 +1,12 @@
-import axios from 'axios';
+import ReliableAxios from '../../utils/Axios';
 
 class HotelResultService {
   get() {
-    return axios
-      .get('https://homework-app.rocketmiles.com/fe-homework/rates')
+    return ReliableAxios.get('/rates')
       .then(response => response.data)
-      .catch(() => {});
+      .catch(error => {
+        console.log('Axios error: ', error);
+      });
   }
 }
 
