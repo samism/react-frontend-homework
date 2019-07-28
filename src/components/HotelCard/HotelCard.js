@@ -19,11 +19,14 @@ const HotelCard = ({
     hotelStaticContent: {
       name,
       neighborhoodName,
+      stars,
       mainImage: { url }
     }
   }
 }) => {
-  const fallBackBg = `https://via.placeholder.com/180.jpg/6dba4a/ffffff?text=Luxury+Hotel!`;
+  const fallBackBg = `https://via.placeholder.com/360.jpg/6dba4a/ffffff?text=“${'⋆'.repeat(
+    stars
+  )}”`;
 
   const backgroundImageStyle = {
     backgroundImage: `url('${url}'), url('${fallBackBg}')`
