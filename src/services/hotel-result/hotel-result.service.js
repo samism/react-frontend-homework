@@ -5,7 +5,7 @@ class HotelResultService {
     return ReliableAxios.get('/rates')
       .then(response => response.data)
       .catch(error => {
-        console.log('Axios error: ', error);
+        throw new Error(error);
       });
   }
 }
