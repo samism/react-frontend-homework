@@ -10,16 +10,13 @@ class Axios {
     this.instance.interceptors.response.use(
       response => response,
       error => {
-        const {
-          config,
-          response: { status }
-        } = error;
+        const { config, response: { status } = {} } = error;
 
         if (status === 500) {
           return new Promise(resolve => resolve(axios(config)));
         }
 
-        return Promise.reject(error);
+        return Promise.reject(error.message);
       }
     );
   }
