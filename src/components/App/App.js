@@ -11,6 +11,7 @@ import CouldntFetchListings from '../CouldntFetchListings';
 
 const App = () => {
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [hotels, setHotels] = useState([]);
   const [presentationalHotelList, setPresentationalHotelList] = useState([]);
 
@@ -20,6 +21,7 @@ const App = () => {
       .then(({ results: { hotels: hotelData } }) => {
         setHotels(hotelData);
         setPresentationalHotelList(hotelData);
+        setLoading(false);
       })
       .catch(() => {
         setError(true);
@@ -86,6 +88,10 @@ const App = () => {
       </section>
     </aside>
   );
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <div className="app-container">
