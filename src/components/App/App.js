@@ -7,16 +7,23 @@ import Utils from '../../utils/Utils';
 
 import HotelCard from '../HotelCard';
 import HotelFilters from '../HotelFilters';
+import CouldntFetchListings from '../CouldntFetchListings';
 
 const App = () => {
+  const [error, setError] = useState(false);
   const [hotels, setHotels] = useState([]);
   const [presentationalHotelList, setPresentationalHotelList] = useState([]);
 
   useEffect(() => {
-    hotelResultService.get().then(({ results: { hotels: hotelData } }) => {
-      setHotels(hotelData);
-      setPresentationalHotelList(hotelData);
-    });
+    hotelResultService
+      .get()
+      .then(({ results: { hotels: hotelData } }) => {
+        setHotels(hotelData);
+        setPresentationalHotelList(hotelData);
+      })
+      .catch(() => {
+        setError(true);
+      });
   }, []);
 
   const filterByName = ({ target: { value: textTyped } }) => {
@@ -66,21 +73,33 @@ const App = () => {
     setPresentationalHotelList(cloned);
   };
 
+  const HotelList = ({ list }) => (
+    <aside>
+      <section className="hotel-list">
+        {list.length ? (
+          list.map(hotel =>
+            error ? Error(error) : <HotelCard key={hotel.id} hotel={hotel} />
+          )
+        ) : (
+          <h1>No results. Please try expanding your search.</h1>
+        )}
+      </section>
+    </aside>
+  );
+
   return (
     <div className="app-container">
       <header>
         <h1 className="app-heading">Welcome to RocketMiles</h1>
       </header>
       <main className="content">
-        <aside>
-          <HotelFilters filters={[filterByName, sortByOption]} />
-        </aside>
+        <HotelFilters filters={[filterByName, sortByOption]} />
 
-        <section className="hotel-list">
-          {presentationalHotelList.map(hotel => (
-            <HotelCard key={hotel.id} hotel={hotel} />
-          ))}
-        </section>
+        {error ? (
+          <CouldntFetchListings error={error} />
+        ) : (
+          <HotelList list={presentationalHotelList} />
+        )}
       </main>
     </div>
   );
