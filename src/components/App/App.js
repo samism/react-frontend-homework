@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.style.scss';
 
 import HotelCard from '../HotelCard';
+import HotelFilters from '../HotelFilters';
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
 
 const App = () => {
@@ -20,19 +21,7 @@ const App = () => {
       </header>
       <main className="content">
         <aside>
-          <div className="filters">
-            Hotel name
-            <input type="text" className="input" maxLength={1} />
-            Price
-            <select name="" className="select">
-              <option value="">Recommended</option>
-              <option value="">Price low-to-high</option>
-              <option value="">Price high-to-low</option>
-            </select>
-            <button className="button" type="button">
-              Reset
-            </button>
-          </div>
+          <HotelFilters />
         </aside>
 
         <section className="hotel-list">
