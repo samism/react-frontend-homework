@@ -32,7 +32,7 @@ const App = () => {
         hotelStaticContent: { name }
       } = hotel;
 
-      return name.toLowerCase().startsWith(textTyped);
+      return name.toLowerCase().startsWith(textTyped.toLowerCase());
     });
 
     setPresentationalHotelList(results);
