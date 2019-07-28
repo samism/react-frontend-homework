@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './HotelCard.style.scss';
 
 /**
@@ -11,30 +12,41 @@ const decodeHtmlEntityString = entity => {
   });
 };
 
-const HotelCard = ({ hotel }) => (
-  <section className="hotel-card">
-    <figure
-      className="image"
-      style={{
-        backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`
-      }}
-    />
-    <section className="hotel-details">
-      <h5 className="hotel-name">{hotel.hotelStaticContent.name}</h5>
-      <p className="location">{hotel.hotelStaticContent.neighborhoodName}</p>
+const HotelCard = ({
+  hotel: {
+    rewards: { miles },
+    lowestAveragePrice: { symbol, amount },
+    hotelStaticContent: {
+      name,
+      neighborhoodName,
+      mainImage: { url }
+    }
+  }
+}) => {
+  const fallBackBg = `https://via.placeholder.com/180.jpg/6dba4a/ffffff?text=Luxury+Hotel!`;
+
+  const backgroundImageStyle = {
+    backgroundImage: `url('${url}'), url('${fallBackBg}')`
+  };
+
+  return (
+    <section className="hotel-card">
+      <figure className="image" style={backgroundImageStyle} />
+      <section className="hotel-details">
+        <h5 className="hotel-name">{name}</h5>
+        <p className="location">{neighborhoodName}</p>
+      </section>
+      <section className="price-details">
+        <span className="price">
+          {`${decodeHtmlEntityString(symbol)}${amount}`}
+        </span>
+        <span className="rewards">{miles} miles</span>
+        <button className="button" type="button">
+          Select
+        </button>
+      </section>
     </section>
-    <section className="price-details">
-      <span className="price">
-        {`${decodeHtmlEntityString(hotel.lowestAveragePrice.symbol)}${
-          hotel.lowestAveragePrice.amount
-        }`}
-      </span>
-      <span className="rewards">{hotel.rewards.miles} miles</span>
-      <button className="button" type="button">
-        Select
-      </button>
-    </section>
-  </section>
-);
+  );
+};
 
 export default HotelCard;
