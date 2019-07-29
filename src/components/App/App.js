@@ -38,7 +38,7 @@ const App = ({ isLoading = true }) => {
       .catch(() => setError(true));
   }, []);
 
-  if (loading) {
+  if (loading && !error) {
     return null;
   }
 
