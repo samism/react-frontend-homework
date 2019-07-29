@@ -11,7 +11,7 @@ const HotelFilters = ({
   listHandler,
   resetHotelList
 }) => (
-  <aside className={!originalData.length && 'input-disabled'}>
+  <aside className={!originalData.length ? 'input-disabled' : undefined}>
     <div className="filters">
       Hotel name
       <input
