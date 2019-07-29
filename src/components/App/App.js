@@ -49,6 +49,7 @@ const App = ({ isLoading = true }) => {
       </header>
       <main className="content">
         <HotelFilters
+          originalData={hotels}
           hotels={presentationalHotelList}
           listHandler={setPresentationalHotelList}
           resetHotelList={() => setPresentationalHotelList(hotels)}
