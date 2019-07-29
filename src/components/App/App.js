@@ -21,9 +21,9 @@ const HotelList = ({ list }) => (
   </aside>
 );
 
-const App = () => {
+const App = ({ isLoading = true }) => {
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isLoading);
   const [hotels, setHotels] = useState([]);
   const [presentationalHotelList, setPresentationalHotelList] = useState([]);
 
