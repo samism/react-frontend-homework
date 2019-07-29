@@ -11,6 +11,10 @@
   border-radius: 2px;
 }
 
+.input-disabled * {
+  cursor: not-allowed;
+}
+
 .filters {
   background-color: white;
   padding: 10px;
