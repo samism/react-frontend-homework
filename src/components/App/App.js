@@ -7,6 +7,20 @@ import HotelCard from '../HotelCard';
 import HotelFilters from '../HotelFilters';
 import CouldntFetchListings from '../CouldntFetchListings';
 
+const HotelList = ({ list }) => (
+  <aside>
+    <section className="hotel-list">
+      {list.length ? (
+        list.map(hotel => <HotelCard key={hotel.id} hotel={hotel} />)
+      ) : (
+        <h1 className="no-results">
+          No results. Please try expanding your search.
+        </h1>
+      )}
+    </section>
+  </aside>
+);
+
 const App = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -23,22 +37,6 @@ const App = () => {
       })
       .catch(() => setError(true));
   }, []);
-
-  const HotelList = ({ list }) => (
-    <aside>
-      <section className="hotel-list">
-        {list.length ? (
-          list.map(hotel =>
-            error ? Error(error) : <HotelCard key={hotel.id} hotel={hotel} />
-          )
-        ) : (
-          <h1 className="no-results">
-            No results. Please try expanding your search.
-          </h1>
-        )}
-      </section>
-    </aside>
-  );
 
   if (loading) {
     return null;
