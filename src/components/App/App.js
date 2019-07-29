@@ -29,7 +29,7 @@ const App = ({ isLoading = true }) => {
 
   useEffect(() => {
     hotelResultService
-      .get()
+      .get('/rates')
       .then(({ results: { hotels: hotelData } }) => {
         setHotels(hotelData);
         setPresentationalHotelList(hotelData);

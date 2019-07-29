@@ -1,8 +1,8 @@
 import ReliableAxios from '../../utils/Axios';
 
 class HotelResultService {
-  get() {
-    return ReliableAxios.get('/rates')
+  get(endpoint) {
+    return ReliableAxios.get(endpoint)
       .then(response => response.data)
       .catch(error => {
         throw new Error(error);
