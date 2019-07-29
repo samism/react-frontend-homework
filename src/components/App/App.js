@@ -51,9 +51,9 @@ const App = () => {
       </header>
       <main className="content">
         <HotelFilters
-          hotels={hotels}
-          displayedHotels={presentationalHotelList}
+          hotels={presentationalHotelList}
           listHandler={setPresentationalHotelList}
+          resetHotelList={() => setPresentationalHotelList(hotels)}
         />
 
         {error ? (
