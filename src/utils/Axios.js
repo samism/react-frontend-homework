@@ -13,7 +13,7 @@ class Axios {
         const { config, response: { status } = {} } = error;
 
         if (status === 500) {
-          return new Promise(resolve => resolve(axios(config)));
+          return new Promise(resolve => resolve(this.instance(config)));
         }
 
         return Promise.reject(error.message);

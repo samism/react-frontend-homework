@@ -16,6 +16,12 @@ describe('Axios', () => {
         .reply(500),
       nock(url)
         .get('/')
+        .reply(500),
+      nock(url)
+        .get('/')
+        .reply(500),
+      nock(url)
+        .get('/')
         .reply(200, 'helloworld')
     ];
 
